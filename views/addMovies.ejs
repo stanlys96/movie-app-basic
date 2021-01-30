@@ -1,0 +1,29 @@
+<%- include('./partials/head.ejs') %>
+<div class="container">
+<form action="/addMovies" method="POST">
+  <!-- TEXT FIELD GROUPS -->
+  <div class="form-group">
+      <label for="name">Name</label>
+      <input class="form-control" type="text" name="name" placeholder="Enter name">
+  </div>
+  <div class="form-group">
+      <label for="released_year">Released Year</label>
+      <input class="form-control form-control" type="text" name="released_year" placeholder="Enter released year">
+  </div>
+  <div class="form-group">
+      <label for="genre">Genre</label>
+      <select class="form-control" name="genre">
+          <option value=""></option>
+          <option value="animation">animation</option>
+          <option value="comedy">comedy</option>
+          <option value="drama">drama</option>
+          <option value="horror">horror</option>
+          <option value="religious">religious</option>
+          <option value="thriller">thriller</option>
+      </select>
+  </div>
+
+  <button class="btn btn-primary btn-block" type="submit">Submit</button>
+</form>
+</div>
+<%- include('./partials/bottom.ejs') %>

@@ -1,0 +1,39 @@
+<%- include('./partials/head.ejs') %>
+<div class="container">
+<form action="/movies/<%= movie.id %>/edit" method="POST">
+  <!-- TEXT FIELD GROUPS -->
+  <div class="form-group">
+      <label for="name">Name</label>
+      <input class="form-control" type="text" name="name" value="<%= movie.name %>">
+  </div>
+  <div class="form-group">
+      <label for="released_year">Released Year</label>
+      <input class="form-control form-control" type="text" name="released_year" value="<%= movie.released_year %>">
+  </div>
+  <div class="form-group">
+      <label for="genre">Genre</label>
+      <select class="form-control" name="genre">
+          <option value=""></option>
+          <option value="animation" <%= movie.genre === 'animation' ? 'selected' : '' %>>animation</option>
+          <option value="comedy" <%= movie.genre === 'comedy' ? 'selected' : '' %>>comedy</option>
+          <option value="drama" <%= movie.genre === 'drama' ? 'selected' : '' %>>drama</option>
+          <option value="horror" <%= movie.genre === 'horror' ? 'selected' : '' %>>horror</option>
+          <option value="religious" <%= movie.genre === 'religious' ? 'selected' : '' %>>religious</option>
+          <option value="thriller" <%= movie.genre === 'thriller' ? 'selected' : '' %>>thriller</option>
+      </select>
+  </div>
+  <div class="form-group">
+      <label for="ProductionHouseId">Production Houses</label>
+      <select class="form-control" name="ProductionHouseId">
+          <option value="">---SELECT---</option>
+            <% productionHouses.forEach(productionHouse => { %>
+            <option value="<%= productionHouse.id %>" <%= productionHouse.id === movie.ProductionHouseId ? 'selected' : '' %>><%= productionHouse.name_prodHouse %></option>
+            <% }) %>
+      </select>
+  </div>
+
+  <button class="btn btn-primary btn-block" type="submit">Update</button>
+  <a href="/movies" class="btn btn-danger btn-block">Cancel</a>
+</form>
+</div>
+<%- include('./partials/bottom.ejs') %>

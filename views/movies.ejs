@@ -1,0 +1,31 @@
+<%- include('./partials/head.ejs') %>
+<div class="container">
+  <h1 class="my-3">List Movies</h1>
+  <a href="/addMovies" class="btn btn-success float-right">Add Movie</a>
+  <table class="table table-sm table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Movie</th>
+            <th>Released Year</th>
+            <th>Genre</th>
+            <th>Production House</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% movies.forEach(movie => { %>
+        <tr>
+          <td><%= movie.name %></td>
+          <td><%= movie.released_year %></td>
+          <td><%= movie.genre %></td>
+          <td><%= !movie.ProductionHouse ? 'unknown' : movie.ProductionHouse.name_prodHouse %></td>
+          <td>
+            <a href="/movies/<%= movie.id %>/edit" class="btn btn-primary">Edit</a>
+            <a href="/movies/<%= movie.id %>/delete" class="btn btn-danger">Delete</a>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<%- include('./partials/bottom.ejs') %>
